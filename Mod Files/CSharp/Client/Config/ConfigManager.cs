@@ -43,7 +43,7 @@ namespace Barotrauma.MoreLevelContent.Config
         {
             IWriteMessage outMsg = NetUtil.CreateNetMsg(NetEvent.CONFIG_REQUEST);
             outMsg.WriteString(Main.Version);
-            GameMain.LuaCs.Networking.Send(outMsg);
+            LuaCsSetup.Instance.Networking.Send(outMsg);
             Log.Verbose("Requested config from server...");
         }
 
@@ -58,7 +58,7 @@ namespace Barotrauma.MoreLevelContent.Config
             IWriteMessage outMsg = NetUtil.CreateNetMsg(NetEvent.CONFIG_WRITE_SERVER);
             outMsg.WriteString(Main.Version);
             WriteConfig(ref outMsg);
-            GameMain.LuaCs.Networking.Send(outMsg);
+            LuaCsSetup.Instance.Networking.Send(outMsg);
             Log.Debug("Sent config packet to server!");
         }
 

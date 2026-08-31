@@ -11,7 +11,7 @@ namespace MoreLevelContent.Networking
         internal static void SendServer(IWriteMessage outMsg, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable)
         {
             if (GameMain.IsSingleplayer) return;
-            GameMain.LuaCs.Networking.Send(outMsg, deliveryMethod);
+            LuaCsSetup.Instance.Networking.Send(outMsg, deliveryMethod);
         }
             
     }

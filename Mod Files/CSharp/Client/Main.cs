@@ -20,7 +20,7 @@ namespace MoreLevelContent
             Hooks.Instance.OnDebugDraw += ClientDebugDraw.Draw;
             SonarExtensions.Instance.Setup();
 
-            GameMain.LuaCs.Hook.Add("roundStart", OpenPatchNotes);
+            LuaCsSetup.Instance.Hook.Add("roundStart", OpenPatchNotes);
 
             // Exit if we're in an editor 
             if (Screen.Selected.IsEditor) return;

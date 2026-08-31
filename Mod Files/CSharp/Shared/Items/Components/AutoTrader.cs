@@ -1035,7 +1035,7 @@ namespace MoreLevelContent.Items
             savedFabricatedItem = null;
         }
 
-        public override  void RemoveComponentSpecific()
+        protected override void RemoveComponentSpecific()
         {
             base.RemoveComponentSpecific();
             OnItemFabricated = null;

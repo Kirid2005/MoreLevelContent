@@ -72,7 +72,7 @@ namespace MoreLevelContent.Items
 
         public override bool RecreateGUIOnResolutionChange => true;
 
-        public override void OnResolutionChanged()
+        protected override void OnResolutionChanged()
         {
             if (GuiFrame != null)
             {
@@ -80,7 +80,7 @@ namespace MoreLevelContent.Items
             }
         }
 
-        public override void CreateGUI()
+        protected override void CreateGUI()
         {
             var paddedFrame = new GUILayoutGroup(new RectTransform(new Vector2(0.95f, 0.9f), GuiFrame.RectTransform, Anchor.Center), childAnchor: Anchor.TopCenter);
 

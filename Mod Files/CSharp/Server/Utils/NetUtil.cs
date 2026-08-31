@@ -17,7 +17,7 @@ namespace MoreLevelContent.Networking
         internal static void SendClient(IWriteMessage outMsg, NetworkConnection connection, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable)
         {
             if (GameMain.IsSingleplayer) return;
-            GameMain.LuaCs.Networking.Send(outMsg, connection, deliveryMethod);
+            LuaCsSetup.Instance.Networking.Send(outMsg, connection, deliveryMethod);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace MoreLevelContent.Networking
         internal static void SendAll(IWriteMessage outMsg, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable)
         {
             if (GameMain.IsSingleplayer) return;
-            GameMain.LuaCs.Networking.Send(outMsg, null, deliveryMethod);
+            LuaCsSetup.Instance.Networking.Send(outMsg, null, deliveryMethod);
         }
     }
 }
