@@ -233,9 +233,19 @@ namespace MoreLevelContent.Shared.Generation
                 yield return CoroutineStatus.Running;
             }
 
+            // The round may have ended, or a new one may have started, while we were waiting
+            if (GameMain.GameSession?.EventManager == null)
+            {
+                yield return CoroutineStatus.Success;
+                yield break;
+            }
 
             var newEvent = prefab.CreateInstance(GameMain.GameSession.EventManager.RandomSeed);
-            GameMain.GameSession.EventManager.ActivateEvent(newEvent);
+            // CreateInstance legitimately returns null if the event doesn't meet the level's requirements
+            if (newEvent != null)
+            {
+                GameMain.GameSession.EventManager.ActivateEvent(newEvent);
+            }
             yield return CoroutineStatus.Success;
         }
 
