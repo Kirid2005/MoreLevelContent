@@ -129,7 +129,7 @@ namespace MoreLevelContent.Missions
             spawnPosition = missionNPCs[0].WorldPosition;
         }
 
-        public override void StartMissionSpecific(Level level)
+        protected override void StartMissionSpecific(Level level)
         {
             if (missionNPCs.characters.Count > 0)
             {
@@ -164,7 +164,7 @@ namespace MoreLevelContent.Missions
         const float MINDIST = 2000f;
         bool triggered = false;
 
-        public override void UpdateMissionSpecific(float deltaTime)
+        protected override void UpdateMissionSpecific(float deltaTime)
         {
             if (IsClient) return;
             // Exit if we're client or if we're already active or if all of the characters are dead
@@ -215,7 +215,7 @@ namespace MoreLevelContent.Missions
             }
         }
 
-        public override bool DetermineCompleted(CampaignMode.TransitionType transitionType)
+        protected override bool DetermineCompleted(CampaignMode.TransitionType transitionType)
         {
             if (Submarine.MainSub != null && Submarine.MainSub.AtEndExit)
             {
@@ -228,7 +228,7 @@ namespace MoreLevelContent.Missions
             return false;
         }
 
-        public override void EndMissionSpecific(bool completed)
+        protected override void EndMissionSpecific(bool completed)
         {
             if (!IsClient)
             {

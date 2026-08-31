@@ -18,10 +18,10 @@ namespace MoreLevelContent.Shared.AI
         {
         }
 
-        public override  bool AllowInAnySub => true;
+        protected override bool AllowInAnySub => true;
 
 
-        public override  void FindTargets()
+        protected override void FindTargets()
         {
             foreach (Character target in GetList())
             {

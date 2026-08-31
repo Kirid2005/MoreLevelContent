@@ -64,7 +64,7 @@ namespace MoreLevelContent.Shared.AI
         Character victim;
 
         // Set the priority of this to be low if we're cuffed or we're still acting /casual/
-        public override  float GetPriority()
+        protected override float GetPriority()
         {
             Priority = IsActingCasual ? 0 : AIObjectiveManager.RunPriority - 0.5f;
             return Priority;
@@ -96,7 +96,7 @@ namespace MoreLevelContent.Shared.AI
             base.Update(deltaTime);
         }
         AIObjectiveEscapeHandcuffs _EscapeHandcuffsSubObjective;
-        public override  void Act(float deltaTime)
+        protected override void Act(float deltaTime)
         {
             // don't do anything if we're cuffed 
             if (character.LockHands)
@@ -417,6 +417,6 @@ namespace MoreLevelContent.Shared.AI
 
         // never abort
         //protected bool CheckObjectiveSpecific() => false;
-        public override  bool CheckObjectiveState() => throw new NotImplementedException();
+        protected override bool CheckObjectiveState() => throw new NotImplementedException();
     }
 }

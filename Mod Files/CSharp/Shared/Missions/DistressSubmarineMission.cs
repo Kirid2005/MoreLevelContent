@@ -256,7 +256,7 @@ namespace MoreLevelContent.Missions
             // TriggerEvents(0);
         }
 
-        public override void StartMissionSpecific(Level level)
+        protected override void StartMissionSpecific(Level level)
         {
             if (lostSubmarine == null) return;
             if (!IsClient) StartServer();
@@ -352,7 +352,7 @@ namespace MoreLevelContent.Missions
         readonly float spawnDist = Sonar.DefaultSonarRange * 2;
         private bool _salvedState = false;
         private bool _migrate = false;
-        public override void UpdateMissionSpecific(float deltaTime)
+        protected override void UpdateMissionSpecific(float deltaTime)
         {
             if (State == -1 || lostSubmarine == null) return;
             UpdateLastPing(deltaTime);
@@ -448,13 +448,13 @@ namespace MoreLevelContent.Missions
             }
         }
 
-        public override bool DetermineCompleted(CampaignMode.TransitionType transitionType)
+        protected override bool DetermineCompleted(CampaignMode.TransitionType transitionType)
         {
             CalculateSurvivingPayout(out survivingCrewPayout);
             return SubSalvaged || CrewResuced;
         }
 
-        public override void EndMissionSpecific(bool completed)
+        protected override void EndMissionSpecific(bool completed)
         {
             if (!IsClient) missionNPCs.End(completed);
             missionNPCs.Clear();

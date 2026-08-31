@@ -10,7 +10,7 @@ namespace MoreLevelContent.Networking
     /// </summary>
     public static partial class NetUtil
     {
-        internal static IWriteMessage CreateNetMsg(NetEvent target) => GameMain.LuaCs.Networking.Start(Enum.GetName(typeof(NetEvent), target));
+        internal static IWriteMessage CreateNetMsg(NetEvent target) => LuaCsSetup.Instance.Networking.Start(Enum.GetName(typeof(NetEvent), target));
 
         /// <summary>
         /// Register a method to run when the specified NetEvent happens
@@ -20,7 +20,7 @@ namespace MoreLevelContent.Networking
         public static void Register(NetEvent target, LuaCsAction netEvent)
         {
             if (GameMain.IsSingleplayer) return;
-            GameMain.LuaCs.Networking.Receive(Enum.GetName(typeof(NetEvent), target), netEvent);
+            LuaCsSetup.Instance.Networking.Receive(Enum.GetName(typeof(NetEvent), target), netEvent);
         }
     }
 

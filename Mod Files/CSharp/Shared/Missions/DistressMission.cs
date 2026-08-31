@@ -12,7 +12,7 @@ namespace MoreLevelContent.Missions
         protected bool DisplayReward;
         public DistressMission(MissionPrefab prefab, Location[] locations, Submarine sub) : base(prefab, locations, sub) => DisplayReward = prefab.ConfigElement.GetAttributeBool("displayreward", false);
 
-        public override void EndMissionSpecific(bool completed)
+        protected override void EndMissionSpecific(bool completed)
         {
             failed = !completed;
             if (completed || Submarine.MainSub.AtEndExit || Submarine.MainSub.AtStartExit)
